@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Stacked Bar Chart</title>
+<script src="js/lib/jquery-3.1.1.min.js"></script>
+<script src="js/lib/Chart.bundle.js"></script>
+</head>
+
+<body>
+	<div>
+		<canvas id="myChart" width="400" height="200"></canvas>
+	</div>
+	<script>
+		var ctx = document.getElementById("myChart").getContext("2d");	
+		var type = 	"line";  
+		 
+		var data = {
+			labels: ["January", "February", "March", "April", "May", "June", "July"],
+			datasets:[{
+			            label: 'Scatter Dataset',
+			            data: [{
+			                x: -10,
+			                y: 0
+			            }, {
+			                x: 0,
+			                y: 10
+			            }, {
+			                x: 10,
+			                y: 5
+			            }]
+			        }]
+		};
+
+		var options =  {
+			responsive : false,	
+			title : {
+				display : true,
+				text : "Hello"
+			    },
+			
+			    tooltips: {
+		                    mode: 'index'
+		                },
+		                hover: {
+		                    mode: 'dataset'
+		                },
+		                scales: {
+		                    xAxes: [{
+		                        display: true,
+		                        scaleLabel: {
+		                            display: true
+		                        }
+		                    }],
+		                    yAxes: [{
+		                        display: true,
+		                        scaleLabel: {
+		                            display: true,
+		                            labelString: 'Value'
+		                        },
+		                        ticks: {
+		                            suggestedMin: 0,
+		                            suggestedMax: 200,
+		                        }
+		                    }]
+		                }
+				
+		}
+		    
+		var config = {
+			type : type,
+			data : data,
+			options : options
+		}
+		new Chart(ctx, config);		
+	</script>
+
+</body>
+</html>
